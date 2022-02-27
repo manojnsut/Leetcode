@@ -12,9 +12,9 @@
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-     // idea is that: as we know binary tree can be reperesent as a array where
-     // if the i is the current node index then,
-     // left and right node will be 2*i and 2*i + 1 respectively
+     // idea is that: as we know binary tree can be reperesent as a array
+     // if i is the current node index then,
+     // left and right node index will be 2*i and 2*i + 1 respectively
     
       unsigned int max_width = 1;
       // in queue we storing the nodes and it's index
@@ -38,9 +38,9 @@ public:
               }               
               
               if(node->left)
-                  q.push({node->left,2*idx - first_idx});
+                  q.push({node->left, 2*idx - first_idx});
               if(node->right)
-                  q.push({node->right,2*idx + 1 - first_idx});       
+                  q.push({node->right, 2*idx + 1 - first_idx});       
           }
       }
      
