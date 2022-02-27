@@ -12,7 +12,7 @@
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-     // idea is that: as we know binary can be reperesent as a array where
+     // idea is that: as we know binary tree can be reperesent as a array where
      // if the i is the current node index then,
      // left and right node will be 2*i and 2*i + 1 respectively
     
