@@ -5,7 +5,7 @@ public:
         int n = graph.size();
         // endmask --it is final state, after all nodes are visited 
         int endmask = (1 << n) -1;
-        // visited data structure to check which nodea are visited or not
+        // visited data structure to check which nodes are visited or not
         vector<vector<bool>> vis(n,vector<bool> (1 << n, false));
         
         queue<pair<int,int>> q;
