@@ -27,7 +27,7 @@ public:
             start = start->next;
         }
         
-        // if putting all the rest elements of lists
+        // insert the rest elements of the lists
         while(l1) {
             start ->next = l1;
             l1 = l1->next;
