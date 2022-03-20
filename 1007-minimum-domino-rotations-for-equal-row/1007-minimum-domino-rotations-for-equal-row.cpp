@@ -1,64 +1,27 @@
 class Solution {
 public:
-    
-    //finds the maximum frequency
-    int maxfreq(vector<int>&v) {
-        int cnt = 0;
-        for(int i = 1; i <=6; ++i)
-              cnt = max(cnt,v[i]);
-        return cnt;
-    }
-    
-    //find the maximum frequency element
-    int findmax(vector<int>&v,int x) {
-        int idx = 0;
-        for(int i = 1; i <= 6; ++i)
-               if(v[i] == x) {
-                   idx = i;
-                   break;
-               }
-        return idx;
-    }
-    
-    
-    int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
-        int n = tops.size();
-        //stores frequency of numbers 1 to 6
-        vector<int> freqTop(7,0);     
-        vector<int> freqBottom(7,0);
+    int minDominoRotations(vector<int>& A, vector<int>& B) {
         
-        for(int i = 0; i < n; ++i) {
-            freqTop[tops[i]]++;
-            freqBottom[bottoms[i]]++;
+    // Count the occurrence of all numbers in A and B,
+    // and also the number of domino with two same numbers.
+    // Try all possibilities from 1 to 6.
+    // If we can make number i in a whole row,
+    //it should satisfy that countA[i] + countB[i] - same[i] = n
+        
+       int n = A.size();
+       vector<int> cntA(7,0),cntB(7,0), equal(7,0);
+        
+        for(int i = 0; i < n; ++i ) {
+            cntA[A[i]]++;
+            cntB[B[i]]++;
+            if(A[i] == B[i]) equal[A[i]]++;
         }
         
-        //finding max frequency
-        int maxFreqTop = maxfreq(freqTop);
-        int maxFreqBottom = maxfreq(freqBottom);
-        
-        int cnt1 = 0, cnt2 = 0;
-        
-        if(maxFreqTop > maxFreqBottom) {
-            int mxt = findmax(freqTop,maxFreqTop);
-            for(int i = 0; i < n; ++i) {
-                if(tops[i] != mxt && (bottoms[i] == mxt))
-                    cnt1++;  
-            }
-            if(cnt1 + maxFreqTop  != n)
-                return -1;
-            else
-                return cnt1;
+        for(int i = 1; i <= 6; ++i) {
+            if(cntA[i] + cntB[i] - equal[i] == n)
+                 return n - max(cntA[i],cntB[i]);
         }
-        else {
-            int mxb = findmax(freqBottom,maxFreqBottom);
-            for(int i = 0; i < n; ++i) {
-                if(bottoms[i] != mxb && (tops[i] == mxb))
-                    cnt2++;  
-            }
-            if(cnt2 + maxFreqBottom  != n)
-                return -1;
-            else
-                return cnt2;
-        }
+        
+        return -1;
     }
 };
