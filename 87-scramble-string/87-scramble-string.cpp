@@ -5,9 +5,6 @@ public:
     bool isScramble(string s1, string s2) {
     int n = s1.size() , m = s2.size();
         
-    //both string are not equal
-    if( n  != m)
-         return 0;
     //both strins are empty
     if ( n == 0 && m == 0)
         return 1;
