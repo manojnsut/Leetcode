@@ -14,7 +14,7 @@ class Solution{
     bool isPowerofTwo(long long n){
         
         // Your code here    
-        return __builtin_popcountll(n) == 1;
+        return __builtin_popcountl(n) == 1;
     }
 };
 
