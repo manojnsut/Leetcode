@@ -5,14 +5,29 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
   public:
+    int lookup[256];
+    
+    void init() {
+        lookup[0] = 0;
+        for(int i = 1; i < 256; ++i) {
+            lookup[i] = ( i & 1) + lookup[i/2];
+        }
+    }
+    
+    int findSetBit(int n) {
+        int cnt = lookup[ n & 0xff];
+        n >>= 8;
+        cnt += lookup[ n & 0xff];
+        n >>= 8;
+        cnt += lookup[ n & 0xff];
+        n >>= 8;
+        cnt += lookup[ n & 0xff];
+        return cnt;
+    }
     int setBits(int N) {
         // Write Your Code here
-        int cnt_setBit = 0;
-        while(N) {
-            cnt_setBit++;
-            N &=(N-1);
-        }
-        return cnt_setBit;
+       init();
+       return findSetBit(N);
     }
 };
 
