@@ -9,10 +9,9 @@ class Solution {
         // Write Your Code here
         int cnt_setBit = 0;
         while(N) {
-            N = N & (N-1);
-            cnt_setBit++;
+            cnt_setBit += (N & 1);
+            N >>=1;
         }
-        
         return cnt_setBit;
     }
 };
