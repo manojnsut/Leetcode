@@ -8,19 +8,29 @@ class Solution
 public:
     vector<int> singleNumber(vector<int> nums) 
     {
-        // Code here.
-        map<int,int> mp;
-        vector<int> res;
-        
-        for(auto i: nums) 
-             mp[i]++;
-             
-        for(auto i: mp) {
-            if( i.second == 1)
-                res.push_back(i.first);
-        }
-        
-        return res;
+        // Code here
+       vector<int> ans;
+       int res = 0, n1 = 0,n2= 0;
+       
+       for(auto x: nums)
+           res ^= x;
+       
+       int setBit = res & -res;
+       
+       for(auto x: nums) {
+           if( x & setBit)
+              n1 = n1 ^ x;
+           else
+              n2 = n2 ^ x;
+       }
+       
+       if(n1 > n2){
+           swap(n1,n2);
+       }
+       ans.push_back(n1);
+       ans.push_back(n2);
+       
+       return ans;
     }
 };
 
