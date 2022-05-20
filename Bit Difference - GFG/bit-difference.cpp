@@ -14,15 +14,7 @@ class Solution{
     int countBitsFlip(int a, int b){
         
         //logic  is number of set bits  after A xor B
-        int n = a ^ b;
-        int cnt = 0;
-        
-        while( n ) {
-           n &= (n-1);
-           cnt++;
-        }
-        
-        return cnt;
+        return __builtin_popcount(a ^ b);
     }
 };
 
