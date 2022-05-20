@@ -1,5 +1,5 @@
 # Check if a Integer is power of 8 or not
-##  Easy 
+## Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a positive integer N, The task is to find if it is a power of eight or not.</span></p>
 
