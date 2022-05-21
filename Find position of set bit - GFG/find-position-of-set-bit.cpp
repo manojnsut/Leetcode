@@ -5,20 +5,19 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
   public:
+    bool isPow2(int n){
+        return __builtin_popcount(n) == 1;
+    }
     int findPosition(int n) {
         // code here
-        if( n == 0)
-        return -1;
-        int pos = 0;
-        int cntSetBit = 0; 
+        if(!isPow2(n)) return -1;
+        
+        int pos = 0; 
         while(n) {
-            cntSetBit += (n & 1);
-            pos++;
             n >>= 1;
+            ++pos;
         }
         
-        if(cntSetBit > 1)
-            return -1;
         return pos;
     }
 };
