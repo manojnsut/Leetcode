@@ -10,13 +10,11 @@ public:
     string is_power_of_eight(long long int n ) 
     {
         // Code here.
-       if( n == 0)
-           return "No";
-           
-        while(n % 8 == 0)
-              n /= 8;
-        
-        return n == 1 ? "Yes" : "No";
+       if(n == 0) return "No";
+       int x = log2(n);
+       if(( x % 3 == 0) && (1LL << x) == n)
+           return "Yes";
+       return "No";
     }
 };
 
