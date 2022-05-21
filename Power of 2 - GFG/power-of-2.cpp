@@ -14,7 +14,9 @@ class Solution{
     bool isPowerofTwo(long long n){
         
         // Your code here 
-       return ( (n & (n-1) )== 0) && (n!=0);
+       if( n  == 0) return false;
+       if( (n & ~(n-1)) == n) return true;
+       return false;
     }
 };
 
