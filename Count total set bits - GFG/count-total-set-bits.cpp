@@ -15,26 +15,16 @@ class Solution{
     int countSetBits(int n)
     {
         // Your logic here
-        n++;
+        ++n; // a binary system starts from 0
         int power2 = 2;
-        int cnt = n / 2; //least significant digit
+        int cnt = n / 2; // total numbers of 1s in the LSB
         
-        while( power2 <= n) {
-            
-            int totalPairs = n / power2;
-            
-            //total 1s
-            
-            cnt += (totalPairs /2) * power2;
-            
-            //if total pairs are odd then there will be extra 1s
-            cnt += (totalPairs & 1) ? ( n % power2) : 0;
-            
-            //next power of 2
-            
-            power2 <<= 1;
+        while(power2 <= n) {
+            int totalPairs = n / power2; //toatal pairs of 1s and 0s
+            cnt += (totalPairs/2)*power2; //toatl number of set bits(1s)
+            cnt += (totalPairs & 1) ? ( n % power2) : 0; //unpaired 1s when total pairs are odd
+            power2 <<= 1; //next power of 2
         }
-        
         return cnt;
     }
 };
